@@ -6,7 +6,6 @@ public class LaserBeam : MonoBehaviour
 {
     float DEFAULT_LASER_LENGTH = 0.5f;
     float RAY_LENGTH = 1f;
-    bool isEnable;
     /// <summary>
     /// レーザーの先に存在するGameObect
     /// </summary>
@@ -30,13 +29,11 @@ public class LaserBeam : MonoBehaviour
         {
             lineRenderer = GetComponent<LineRenderer>();
         }
-
-        isEnable = true;
     }
 
     void Update()
     {
-        if (!isEnable || !anchor)
+        if (!lineRenderer || !anchor)
         {
             Debug.LogError("LeaserBeam properties are not set.");
             return;
