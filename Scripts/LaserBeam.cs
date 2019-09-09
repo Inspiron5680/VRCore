@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class LaserBeam : MonoBehaviour
 {
-    float DEFAULT_LEBGTH = 0.5f;
-    float RAY_LENGTH = 500f;
+    float DEFAULT_LASER_LENGTH = 0.5f;
+    float RAY_LENGTH = 1f;
     bool isEnable;
     /// <summary>
     /// レーザーの先に存在するGameObect
     /// </summary>
     public GameObject Target { get; private set; }
 
+    [SerializeField] LayerMask rayExclusionLayers;
     [SerializeField] Transform anchor;
     [SerializeField] LineRenderer lineRenderer;
 
@@ -43,7 +44,7 @@ public class LaserBeam : MonoBehaviour
 
         Ray ray = new Ray(anchor.position, anchor.forward);
         RaycastHit hit;
-        if(Physics.Raycast(ray,out hit, RAY_LENGTH))
+        if(Physics.Raycast(ray,out hit, RAY_LENGTH,rayExclusionLayers))
         {
             Target = hit.transform.gameObject;
             drawBeam(hit.point);
@@ -51,7 +52,7 @@ public class LaserBeam : MonoBehaviour
         }
 
         Target = null;
-        drawBeam(anchor.position + anchor.forward * DEFAULT_LEBGTH);
+        lineRenderer.enabled = false;
     }
 
     void drawBeam(Vector3 position)
