@@ -74,7 +74,7 @@ LineRenderer:
   - {x: 0, y: 0, z: 1}
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.002
+    widthMultiplier: 0.005
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -151,7 +151,5 @@ MonoBehaviour:
   rayExclusionLayers:
     serializedVersion: 2
     m_Bits: 512
-  anchors:
-  - {fileID: 0}
-  - {fileID: 0}
+  anchor: {fileID: 0}
   lineRenderer: {fileID: 2071720297895504651}

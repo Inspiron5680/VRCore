@@ -1,5 +1,10 @@
 ﻿using UnityEngine;
+using UniRx.Triggers;
+using UniRx;
 
+/// <summary>
+/// 離れたオブジェクトを操作するレーザーを作り出すクラス
+/// </summary>
 public class LaserBeam : MonoBehaviour
 {
     float DEFAULT_LASER_LENGTH = 0.5f;
@@ -7,7 +12,7 @@ public class LaserBeam : MonoBehaviour
     /// <summary>
     /// レーザーの先に存在するGameObect
     /// </summary>
-    public GameObject Target { get; private set; }
+    public ILaserSelectReceiver Target { get; private set; }
 
     [SerializeField] LayerMask rayExclusionLayers;
     [SerializeField] Transform anchor;
@@ -27,6 +32,11 @@ public class LaserBeam : MonoBehaviour
         {
             lineRenderer = GetComponent<LineRenderer>();
         }
+
+        this.UpdateAsObservable()
+            .Where(_ => Target != null)
+            .Where(_ => OVRInput.GetDown(OVRInput.RawButton.RIndexTrigger) || OVRInput.GetDown(OVRInput.RawButton.LIndexTrigger))
+            .Subscribe(_ => Target.LaserSelectReceiver());
     }
 
     void Update()
@@ -41,7 +51,7 @@ public class LaserBeam : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(ray,out hit, RAY_LENGTH,rayExclusionLayers))
         {
-            Target = hit.transform.gameObject;
+            Target = hit.transform.GetComponent<ILaserSelectReceiver>();
             drawBeam(hit.point);
             return;
         }
