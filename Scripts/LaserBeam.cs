@@ -7,7 +7,7 @@ using UniRx;
 /// </summary>
 public class LaserBeam : MonoBehaviour
 {
-    float RAY_LENGTH = 1f;
+    readonly float RAY_LENGTH = 1f;
     /// <summary>
     /// レーザーの先に存在するGameObect
     /// </summary>
