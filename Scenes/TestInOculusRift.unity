@@ -337,6 +337,16 @@ PrefabInstance:
       propertyPath: m_Parameters.widthMultiplier
       value: 0.005
       objectReference: {fileID: 0}
+    - target: {fileID: 3195824775458116186, guid: c4ea8d4c5616c234f816f577b6f4d4da,
+        type: 3}
+      propertyPath: rayExclusionLayers.m_Bits
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 3270535227230714126, guid: c4ea8d4c5616c234f816f577b6f4d4da,
+        type: 3}
+      propertyPath: rayExclusionLayers.m_Bits
+      value: 32
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4ea8d4c5616c234f816f577b6f4d4da, type: 3}
 --- !u!1001 &4508205870269731526
@@ -350,6 +360,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TestUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508205868237468452, guid: 14d6ce4c4a91be340b48a2a72bbc9576,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4508205868237468453, guid: 14d6ce4c4a91be340b48a2a72bbc9576,
         type: 3}
