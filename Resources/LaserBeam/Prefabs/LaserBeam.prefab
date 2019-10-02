@@ -150,6 +150,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rayExclusionLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 32
   anchor: {fileID: 0}
   lineRenderer: {fileID: 2071720297895504651}
