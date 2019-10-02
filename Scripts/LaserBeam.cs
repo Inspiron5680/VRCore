@@ -11,7 +11,7 @@ public class LaserBeam : MonoBehaviour
     /// <summary>
     /// レーザーの先に存在するGameObect
     /// </summary>
-    public ILaserSelectReceiver Target { get; private set; }
+    public VRUI Target { get; private set; }
 
     [SerializeField] LayerMask rayExclusionLayers;
     [SerializeField] Transform anchor;
@@ -35,7 +35,7 @@ public class LaserBeam : MonoBehaviour
         this.UpdateAsObservable()
             .Where(_ => Target != null)
             .Where(_ => OVRInput.GetDown(OVRInput.RawButton.RIndexTrigger) || OVRInput.GetDown(OVRInput.RawButton.LIndexTrigger))
-            .Subscribe(_ => Target.LaserSelectReceiver());
+            .Subscribe(_ => Target.Receiver());
     }
 
     void Update()
@@ -50,7 +50,7 @@ public class LaserBeam : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(ray,out hit, RAY_LENGTH,rayExclusionLayers))
         {
-            Target = hit.transform.GetComponent<ILaserSelectReceiver>();
+            Target = hit.transform.GetComponent<VRUI>();
             drawBeam(hit.point);
             return;
         }
