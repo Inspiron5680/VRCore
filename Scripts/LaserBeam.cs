@@ -48,9 +48,9 @@ public class LaserBeam : MonoBehaviour
 
         Ray ray = new Ray(anchor.position, anchor.forward);
         RaycastHit hit;
-        if(Physics.Raycast(ray,out hit, RAY_LENGTH,rayExclusionLayers))
+        if (Physics.Raycast(ray, out hit, RAY_LENGTH, rayExclusionLayers))
         {
-            Target = hit.transform.GetComponent<VRUI>();
+            Target = hit.collider.GetComponent<VRUI>();
             drawBeam(hit.point);
             return;
         }
