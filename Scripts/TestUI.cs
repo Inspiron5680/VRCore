@@ -49,6 +49,6 @@ public class TestUI : MonoBehaviour, VRUI
 
     public void Reaction()
     {
-        throw new System.NotImplementedException();
+        return;
     }
 }
