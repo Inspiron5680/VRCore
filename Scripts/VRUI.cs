@@ -5,4 +5,5 @@
 public interface VRUI
 {
     void Receiver();
+    void Reaction();
 }
