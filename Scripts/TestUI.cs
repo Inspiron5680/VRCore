@@ -46,4 +46,9 @@ public class TestUI : MonoBehaviour, VRUI
 
         isTranslucent = doMakeTranslucent;
     }
+
+    public void Reaction()
+    {
+        throw new System.NotImplementedException();
+    }
 }

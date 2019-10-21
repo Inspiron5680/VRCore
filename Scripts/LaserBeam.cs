@@ -52,6 +52,7 @@ public class LaserBeam : MonoBehaviour
         {
             Target = hit.collider.GetComponent<VRUI>();
             drawBeam(hit.point);
+            Target.Reaction();
             return;
         }
 
